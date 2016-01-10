@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Admin;
-use app\models\AdminSearch;
+use app\models\search\AdminSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

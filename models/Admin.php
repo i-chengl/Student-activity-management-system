@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "act_admin".
+ * This is the model class for table "{{%admin}}".
  *
  * @property string $adm_id
  * @property string $adm_name
@@ -18,7 +18,7 @@ class Admin extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'act_admin';
+        return '{{%admin}}';
     }
 
     /**
@@ -39,9 +39,18 @@ class Admin extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'adm_id' => 'Adm ID',
-            'adm_name' => 'Adm Name',
-            'adm_passwd' => 'Adm Passwd',
+            'adm_id' => 'id',
+            'adm_name' => '姓名',
+            'adm_passwd' => '密码',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return \app\models\query\AdminQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new \app\models\query\AdminQuery(get_called_class());
     }
 }

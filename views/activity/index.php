@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ActivitySearch */
+/* @var $searchModel app\models\search\ActivitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Activities';
@@ -27,14 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'act_id',
             'act_name',
-            'act_date_beg',
-            'act_date_end',
-            'act_time_submit',
+//             'act_date_beg',
+//             'act_date_end',
+//             'act_time_submit',
             // 'act_time_update',
-            // 'act_is_personal',
-            // 'act_id_submit',
+            'act_is_personal',
+            'act_id_submit',
             // 'act_host',
-            // 'act_partici:ntext',
+            'act_partici:ntext',
             // 'act_id_cat',
             // 'act_state',
             // 'act_attach',

@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\User;
+use app\models\Category;
 
 /**
- * UserSearch represents the model behind the search form about `app\models\User`.
+ * CategorySearch represents the model behind the search form about `app\models\Category`.
  */
-class UserSearch extends User
+class CategorySearch extends Category
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['usr_id', 'usr_state'], 'integer'],
-            [['usr_name', 'usr_passwd', 'usr_depart', 'usr_class'], 'safe'],
+            [['cat_id', 'cat_level', 'cat_id_parent'], 'integer'],
+            [['cat_name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = Category::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,14 +56,12 @@ class UserSearch extends User
         }
 
         $query->andFilterWhere([
-            'usr_id' => $this->usr_id,
-            'usr_state' => $this->usr_state,
+            'cat_id' => $this->cat_id,
+            'cat_level' => $this->cat_level,
+            'cat_id_parent' => $this->cat_id_parent,
         ]);
 
-        $query->andFilterWhere(['like', 'usr_name', $this->usr_name])
-            ->andFilterWhere(['like', 'usr_passwd', $this->usr_passwd])
-            ->andFilterWhere(['like', 'usr_depart', $this->usr_depart])
-            ->andFilterWhere(['like', 'usr_class', $this->usr_class]);
+        $query->andFilterWhere(['like', 'cat_name', $this->cat_name]);
 
         return $dataProvider;
     }

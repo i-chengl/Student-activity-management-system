@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "act_user".
+ * This is the model class for table "{{%user}}".
  *
  * @property string $usr_id
  * @property string $usr_name
@@ -14,7 +14,7 @@ use Yii;
  * @property string $usr_depart
  * @property string $usr_class
  *
- * @property ActActivity[] $actActivities
+ * @property Activity[] $activities
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -23,7 +23,7 @@ class User extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'act_user';
+        return '{{%user}}';
     }
 
     /**
@@ -47,19 +47,28 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'usr_id' => '学号/工号',
-            'usr_name' => '姓名',
+            'usr_name' => '用户名',
             'usr_passwd' => '密码',
-            'usr_state' => '状态（0.学生，1.教师）',
-            'usr_depart' => '学院',
-            'usr_class' => '班级',
+            'usr_state' => '身份：1-teacher 0-student',
+            'usr_depart' => '所属院系(教师可为NULL)',
+            'usr_class' => '所属班级(教师为NULL)',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getActActivities()
+    public function getActivities()
     {
         return $this->hasMany(Activity::className(), ['act_id_submit' => 'usr_id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return \app\models\query\UserQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new \app\models\query\UserQuery(get_called_class());
     }
 }
