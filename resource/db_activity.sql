@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-01-09 13:31:47
+-- Generation Time: 2016-01-11 12:36:30
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `act_activity` (
   `act_time_submit` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '活动提交时间',
   `act_time_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '活动最后更新时间',
   `act_is_personal` tinyint(1) NOT NULL COMMENT '是否个人活动(参与者可数)',
-  `act_id_submit` bigint(11) NOT NULL COMMENT '活动所有者(该活动表提交者)',
+  `act_id_submit` bigint(11) NOT NULL COMMENT '提交人',
   `act_host` varchar(80) CHARACTER SET utf8 DEFAULT NULL COMMENT '主办方',
-  `act_partici` text CHARACTER SET utf8 NOT NULL COMMENT '活动参与者(存储参与者id，函数分割/查询/统计)',
-  `act_id_cat` int(11) NOT NULL COMMENT '活动所属类别id',
+  `act_partici` text CHARACTER SET utf8 NOT NULL COMMENT '参与者(以空格分隔)',
+  `act_id_cat` int(11) NOT NULL COMMENT '所属类别',
   `act_state` int(4) NOT NULL COMMENT '活动状态(待审核/审核未通过/完结)',
   `act_attach` varchar(80) CHARACTER SET utf8 DEFAULT NULL COMMENT '附件',
   `act_comment` text CHARACTER SET utf8 COMMENT '备注',
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `act_activity` (
 
 CREATE TABLE IF NOT EXISTS `act_admin` (
   `adm_id` bigint(11) unsigned NOT NULL COMMENT 'id',
-  `adm_name` varchar(10) NOT NULL COMMENT '姓名',
+  `adm_name` varchar(10) NOT NULL COMMENT '管理员',
   `adm_passwd` varchar(20) NOT NULL COMMENT '密码',
   PRIMARY KEY (`adm_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `act_admin` (
 
 CREATE TABLE IF NOT EXISTS `act_category` (
   `cat_id` bigint(11) unsigned NOT NULL COMMENT '活动类别id',
-  `cat_name` varchar(40) NOT NULL COMMENT '活动类别名称',
+  `cat_name` varchar(40) NOT NULL COMMENT '活动类别',
   `cat_level` int(4) NOT NULL COMMENT '类别深度(1，2...级分类)',
-  `cat_id_parent` bigint(11) DEFAULT NULL COMMENT '父类别id(level为1时此处为NULL)',
+  `cat_id_parent` bigint(11) DEFAULT NULL COMMENT '父类别（level为1时此处为NULL)',
   PRIMARY KEY (`cat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='活动类别表';
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `act_user` (
   `usr_passwd` varchar(20) NOT NULL COMMENT '密码',
   `usr_state` tinyint(1) NOT NULL COMMENT '身份：1-teacher 0-student',
   `usr_depart` varchar(40) DEFAULT NULL COMMENT '所属院系(教师可为NULL)',
-  `usr_class` varchar(20) DEFAULT NULL COMMENT '所属班级(教师为NULL)',
+  `usr_class` varchar(20) DEFAULT NULL COMMENT '所属班级/系',
   PRIMARY KEY (`usr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
