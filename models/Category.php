@@ -43,7 +43,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'cat_id' => '活动类别id',
-            'cat_name' => '活动类别名称',
+            'cat_name' => '类别名称',
             'cat_level' => '类别深度(1，2...级分类)',
             'cat_id_parent' => '父类别id(level为1时此处为NULL)',
         ];

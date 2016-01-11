@@ -91,4 +91,9 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+    public function actionAdmin(){
+//     	echo "dadsa";
+    	return $this->render('admin_index');
+    }
 }

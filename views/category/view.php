@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Category */
 
 $this->title = $model->cat_id;
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '活动分类', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->cat_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->cat_id], [
+        <?= Html::a('更新', ['更新', 'id' => $model->cat_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['删除', 'id' => $model->cat_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

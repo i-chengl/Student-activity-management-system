@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Activity */
 
 $this->title = $model->act_id;
-$this->params['breadcrumbs'][] = ['label' => 'Activities', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '查看活动', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="activity-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->act_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->act_id], [
+        <?= Html::a('更新', ['更新', 'id' => $model->act_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['删除', 'id' => $model->act_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '你确定要删除这个活动吗?',
                 'method' => 'post',
             ],
         ]) ?>
