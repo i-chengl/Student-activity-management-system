@@ -50,8 +50,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'usr_name' => '用户名',
             'usr_passwd' => '密码',
             'usr_state' => '身份：1-teacher 0-student',
-            'usr_depart' => '所属院系(教师可为NULL)',
-            'usr_class' => '所属班级(教师为NULL)',
+            'usr_depart' => '院系',
+            'usr_class' => '班级/系',
         ];
     }
 

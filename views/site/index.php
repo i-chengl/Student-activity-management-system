@@ -12,7 +12,7 @@ $this->title = 'BOSS';
 
         <p class="lead"></p>
 
-        <p><a class="btn btn-lg btn-success" href="?r=site/admin">进入</a></p>
+        <p><a class="btn btn-lg btn-success" href="?r=site/login">进入</a></p>
     </div>
 
 </div>
