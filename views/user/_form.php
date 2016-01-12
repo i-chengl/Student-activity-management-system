@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'usr_passwd')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'usr_state')->textInput() ?>
+    <?= $form->field($model, 'usr_state')->dropDownList([0=>'学生',1=>'教师']) ?>
 
     <?= $form->field($model, 'usr_depart')->textInput(['maxlength' => true]) ?>
 
