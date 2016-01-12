@@ -5,7 +5,7 @@ $this->title = '管理员';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($username."，您好！") ?></h1>
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-4 column">

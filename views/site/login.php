@@ -28,37 +28,31 @@ $this->params['breadcrumbs'][] = $this->title;
 					</div>
 				</div>
 			<div class="col-md-6 column">
-				<div align="center">
-					<h2><strong>登陆</strong></h2>
-				</div>
+					<div class = "col-lg-offset-4 col-lg-8"><br>
+						<h2><strong>登陆</strong></h2>
+						<br>
+					</div>
 				<?php $form = ActiveForm::begin([
 					'id' => 'login-form',
 					 'options' => ['class' => 'form-horizontal'],
 					 'fieldConfig' => [
-					     'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-					      'labelOptions' => ['class' => 'col-lg-1 control-label'],
+					     'template' => "{label}:<div class=\"col-lg-5\">{input}</div><div class=\"col-lg-5\">{error}</div>",
+					      'labelOptions' => ['class' => 'col-lg-2 control-label'],
 					   ],
     			]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'usr_name')->label('Name')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+        <?= $form->field($model, 'usr_passwd')->label('Pass')->passwordInput() ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
             'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
         ]) ?>	
-        <div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				普通用户 
-				<input type="radio" name="radiobutton" value="radiobutton" />
-				管理员 
-				<input type="radio" name="radiobutton" value="radiobutton" />
-			</div>
-		</div>
+        <?= $form->field($model, 'role')->radioList([0 =>'普通用户',1=>'管理员'])->label('角色') ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="col-lg-offset-4 col-lg-8">
+                <?= Html::submitButton('登陆', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
         </div>
 
@@ -68,44 +62,4 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 	</div>
 </div>
-
-
-	<!-- 
-
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'options' => ['class' => 'form-horizontal'],
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username') ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-        <div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				普通用户 
-				<input type="radio" name="radiobutton" value="radiobutton" />
-				管理员 
-				<input type="radio" name="radiobutton" value="radiobutton" />
-			</div>
-		</div>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
-        </div>
-
-    <?php ActiveForm::end(); ?>
-
-
- -->
 </div>

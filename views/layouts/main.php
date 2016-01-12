@@ -42,7 +42,7 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ?
                 ['label' => '登录', 'url' => ['/site/login']] :
                 [
-                    'label' => '退出 (' . Yii::$app->user->identity->username . ')',
+                    'label' => '退出 (' . Yii::$app->user->identity->usr_name . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
