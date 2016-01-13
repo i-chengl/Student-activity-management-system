@@ -40,6 +40,15 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+    
+    public function actionManger($id){
+    	
+    	
+    	return $this->render('manger' , [
+    			$model =>$this->findModel($id)
+    	]);	
+    }
 
     /**
      * Displays a single User model.

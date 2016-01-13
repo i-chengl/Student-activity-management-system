@@ -63,7 +63,7 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 //             return $this->goBack();
-				return $this->render('admin_index' , ['username' =>$model->usr_name]);
+				$this->actionAdmin();
         }
         return $this->render('login', [
             'model' => $model,
@@ -97,6 +97,6 @@ class SiteController extends Controller
     
     public function actionAdmin()
     {
-    	return $this->render('admin_index');
+    	return $this->render('admin_index' , ['username' =>'']);
     }
 }
