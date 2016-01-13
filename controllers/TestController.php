@@ -7,6 +7,7 @@ namespace app\controllers;
 use app\models\User;
 use app\models\Activity;
 use app\models\ActivityMangerModel;
+use app\models\UserMangerModel;
 class TestController extends \yii\web\Controller
 {
 //     public function actionIndex()
@@ -44,20 +45,33 @@ class TestController extends \yii\web\Controller
 //     	}
 //     }
 	private $act_name = "测试添加活动";
-	private  $act_id = 3120602019;
+	private  $act_id = 3120602001;
 	private $user_name = "陈林";
 
 	public function actionIndex(){
+// 		$activity = Activity::findOne(['act_id_submit' => $this->act_id]);
 		
-		$activity = new ActivityMangerModel();
+// 		$result = $activity->getActIdCat();
 		
-// 		$reslut = $activity->getActivityByActName($this->act_name);
+		$activity = User::findOne(['usr_id' =>$this->act_id])->activities;
 		
-		$reslut = $activity->getActivityByParyId($this->act_id);
+// 		$result = $user->getActivities();	
+		
+		
+		
+// 		$activity = new ActivityMangerModel();
+		
+// 		$activities = new UserMangerModel();
+		
+// 		$result = $activities->getActivityByid($this->act_id);
+		
+// 		$result = $activity->getActivityByActName($this->act_name);
+		
+// 		$result = $activity->getActivityByParyId($this->act_id);
 
-// 		$reslut = $activity->getActivityByPartName($this->user_name);
+// 		$result = $activity->getActivityByPartName($this->user_name);
 		
-		var_dump($reslut);
+		var_dump($activity);
 	}
 
 }

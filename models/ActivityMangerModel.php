@@ -32,8 +32,6 @@ class ActivityMangerModel extends Model implements IActivityManger {
 	}
 	
 	
-
-	
 	/*
 	 * 根据用户ID获取自己参加的个人活动  
 	 * */
@@ -45,7 +43,7 @@ class ActivityMangerModel extends Model implements IActivityManger {
 						->select(['act_id','act_partici'])
 						->asArray()
 						->all();
-		
+		//对集体活动进行处理
 		$classArray = UserMangerModel::getClassById($id);
 		$departArray = UserMangerModel::getDepartById($id);
 		
@@ -56,6 +54,8 @@ class ActivityMangerModel extends Model implements IActivityManger {
 				
 			$name = $value['act_id'];
 			$partici = $value['act_partici'];
+			
+			//包含个人活动的ID 和集体活动的集体名称 如：计算机1201  后续考虑扩展的话 需要建立班级，学院表
 			$nameArray = explode('、', $partici);
 				
 			if( in_array($id, $nameArray) || in_array($class, $nameArray) || in_array($depart, $nameArray)){

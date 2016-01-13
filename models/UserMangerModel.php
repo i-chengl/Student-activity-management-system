@@ -14,13 +14,13 @@ class UserMangerModel extends Model implements IUserManger {
 	
 	public function getActivityByid($id){
 		
+		return Activity::find()
+							->where(['act_id_submit' =>$id])
+							->asArray()
+							->all();
 	}
 	
-	/*
-	 * 查询自己参过过的活动
-	 * @return
-	 * @params
-	 *   */
+
 	
 	/*
 	 * 根据用户id获取用户详细信息 

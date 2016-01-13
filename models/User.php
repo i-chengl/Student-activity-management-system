@@ -110,9 +110,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
 //     	return static::findOne($username);
 		$user = User::find()
-			->where(['usr_name' => $username])
-			->asArray()
-			->one();
+					->where(['usr_name' => $username])
+					->asArray()
+					->one();
 		if($user)
 			return new static($user);
 		return null;
