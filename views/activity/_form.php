@@ -14,7 +14,9 @@ use app\models\Category;
 
 <div class="activity-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+    		 'options' => ['enctype' => 'multipart/form-data'],
+    ]); ?>
 
     <?= $form->field($model, 'act_name')->textInput(['maxlength' => true]) ?>
 
@@ -45,7 +47,7 @@ use app\models\Category;
     	//->dropDownList(['','待审核','审核未通过','完结'])?>
  -->
 
-    <?= $form->field($model, 'act_attach' , ['options' => ['enctype' => 'multipart/form-data']])->fileInput()
+    <?= $form->field($model, 'zipUpload')->label('附件（压缩包）')->fileInput()
 //     ->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'act_comment')->textarea(['rows' => 6]) ?>
@@ -55,7 +57,7 @@ use app\models\Category;
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
+	
     <?php ActiveForm::end(); ?>
 
 </div>

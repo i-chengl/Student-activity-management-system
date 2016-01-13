@@ -28,7 +28,7 @@ use Yii;
  */
 class Activity extends \yii\db\ActiveRecord
 {
-	
+	public $zipUpload;
 	
     /**
      * @inheritdoc
@@ -51,7 +51,7 @@ class Activity extends \yii\db\ActiveRecord
             [['act_name'], 'string', 'max' => 10],
             [['act_host'], 'string', 'max' => 80],
         		
-        	[['act_attach'] , 'file' , 'skipOnEmpty' =>false , 'extensions' => 'zip,rar'],
+        	[['zipUpload'] , 'file' , 'skipOnEmpty' =>false , 'extensions' => 'zip,rar'],
         ];
     }
 
@@ -83,10 +83,10 @@ class Activity extends \yii\db\ActiveRecord
     public function uploadZip(){
     
     	if($this->validate()) {
-    		$this->act_attach->saveAs('uploads/'.$this->act_attach->baseName.'.'.$this->act_attach->extensions);
+    		$this->zipUpload->saveAs('uploads/'.$this->zipUpload->baseName.'.'.$this->zipUpload->extension);
     		return true;
     	}else{
-    		return FALSE;
+    		return false;
     	}
     }
 

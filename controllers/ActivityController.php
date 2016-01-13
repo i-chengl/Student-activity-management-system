@@ -15,6 +15,9 @@ use yii\web\UploadedFile;
  */
 class ActivityController extends Controller
 {
+	
+	public $enableCsrfValidation = false;//不防范csrf攻击
+	
     public function behaviors()
     {
         return [
@@ -42,18 +45,6 @@ class ActivityController extends Controller
         ]);
     }
     
-    //未完成，此处需要上传到数据库
-    public function actionUpload(){
-    	
-    	$model = new Activity();
-    	if (Yii::$app->request->isPost) {
-    		$model->act_attach = UploadedFile::getInstance($model, 'act_attach');
-    	}
-    	
-    	if ($model->uploadZip()){
-    		return true;
-    	}
-    }
 
     /**
      * Displays a single Activity model.
@@ -76,13 +67,13 @@ class ActivityController extends Controller
     {
         $model = new Activity();
         
-        if(!empty($model->act_attach)){
-        	$model->act_attach = UploadedFile::getInstance($model, 'act_attach');
+       
+        if(!empty($model->zipUpload)){
+        	$model->zipUpload = UploadedFile::getInstance($model, 'zipUpload');
         }
         if($model->uploadZip()){
         	$model->act_attach = '1';
         }
-        
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->act_id]);

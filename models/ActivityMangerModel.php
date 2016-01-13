@@ -32,16 +32,12 @@ class ActivityMangerModel extends Model implements IActivityManger {
 	}
 	
 	
-	
-	
-	public function getActivityByParyId($id){
-		
-		$this->getPensonlAcitivityById($id);
 
-	}
 	
-	/*根据用户ID获取自己参加的个人活动  */
-	public function getPensonlAcitivityById($id){
+	/*
+	 * 根据用户ID获取自己参加的个人活动  
+	 * */
+	public function getActivityByParyId($id){
 		//我参加的活动的活动id 集合
 		$act_id = array();
 		
@@ -50,8 +46,11 @@ class ActivityMangerModel extends Model implements IActivityManger {
 						->asArray()
 						->all();
 		
-		$classArray = UserMangerModel::getClassById($id)->toArray();
+		$classArray = UserMangerModel::getClassById($id);
 		$departArray = UserMangerModel::getDepartById($id);
+		
+		$class = $classArray['usr_class'];
+		$depart = $departArray['usr_depart'];
 		
 		foreach ($activity as $value){
 				
@@ -59,9 +58,8 @@ class ActivityMangerModel extends Model implements IActivityManger {
 			$partici = $value['act_partici'];
 			$nameArray = explode('、', $partici);
 				
-			if(in_array($id, $nameArray) || in_array($needle, $haystack)){
+			if( in_array($id, $nameArray) || in_array($class, $nameArray) || in_array($depart, $nameArray)){
 				$act_id[] = $name;
-				// 				var_dump($act_id);die;
 			}
 		}
 		
@@ -71,17 +69,6 @@ class ActivityMangerModel extends Model implements IActivityManger {
 					->all();
 	}
 	
-	/*
-	 *  根据用户ID查询自己参加的集体活动 
-	 *  */
-	public function getGroupActivityById($id){
-		
-
-	 	
-	 	$classAndDepart = array_merge($classArray,$departArray);  //返回两个数组
-	 	
-	 	
-	}
 	
 	
 }

@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\User;
+use app\models\UploadFileModel;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -89,6 +91,27 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
+    
+    
+    public function actionUpload()
+    {
+    	$model = new UploadFileModel();
+    
+    	if (Yii::$app->request->isPost) {
+    		$model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+    		if ($model->uploadImage()) {
+    			echo "上传成功";// 文件上传成功
+    			return;
+    		}
+    	}
+    
+    	return $this->render('upload', ['model' => $model]);
+    }
+    
+    
+    
+    
 
     public function actionAbout()
     {

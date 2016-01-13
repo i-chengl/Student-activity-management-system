@@ -53,9 +53,9 @@ class TestController extends \yii\web\Controller
 		
 // 		$reslut = $activity->getActivityByActName($this->act_name);
 		
-// 		$reslut = $activity->getActivityByParyId($this->act_id);
+		$reslut = $activity->getActivityByParyId($this->act_id);
 
-		$reslut = $activity->getActivityByPartName($this->user_name);
+// 		$reslut = $activity->getActivityByPartName($this->user_name);
 		
 		var_dump($reslut);
 	}

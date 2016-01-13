@@ -3,7 +3,7 @@
 namespace app\models;
 use yii\base\Model;
 
-class UploadFileMoeld extends Model {
+class UploadFileModel extends Model {
 	
 	public $imageFile;
 	
@@ -22,7 +22,7 @@ class UploadFileMoeld extends Model {
 		if ($this->validate()) {
 			$this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
 			return true;
-		} else {
+		} else {	
 			return false;
 		}
 	}
@@ -31,6 +31,9 @@ class UploadFileMoeld extends Model {
 		
 		if($this->validate()) {
 			$this->zipFile->saveAs('uploads/'.$this->zipFile->baseName.'.'.$this->zipFile->extension);
+			return true;
+		}else {
+			return false;
 		}
 	}
 	
