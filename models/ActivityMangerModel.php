@@ -47,16 +47,19 @@ class ActivityMangerModel extends Model implements IActivityManger {
 		
 		$activity = Activity::find()
 						->select(['act_id','act_partici'])
-						->where(['act_is_personal' =>1])
 						->asArray()
 						->all();
+		
+		$classArray = UserMangerModel::getClassById($id)->toArray();
+		$departArray = UserMangerModel::getDepartById($id);
+		
 		foreach ($activity as $value){
 				
 			$name = $value['act_id'];
 			$partici = $value['act_partici'];
 			$nameArray = explode('、', $partici);
 				
-			if(in_array($id, $nameArray)){
+			if(in_array($id, $nameArray) || in_array($needle, $haystack)){
 				$act_id[] = $name;
 				// 				var_dump($act_id);die;
 			}
@@ -68,9 +71,16 @@ class ActivityMangerModel extends Model implements IActivityManger {
 					->all();
 	}
 	
-	
+	/*
+	 *  根据用户ID查询自己参加的集体活动 
+	 *  */
 	public function getGroupActivityById($id){
 		
+
+	 	
+	 	$classAndDepart = array_merge($classArray,$departArray);  //返回两个数组
+	 	
+	 	
 	}
 	
 	

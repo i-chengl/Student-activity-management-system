@@ -45,8 +45,8 @@ use app\models\Category;
     	//->dropDownList(['','待审核','审核未通过','完结'])?>
  -->
 
-
-    <?= $form->field($model, 'act_attach')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'act_attach' , ['options' => ['enctype' => 'multipart/form-data']])->fileInput()
+//     ->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'act_comment')->textarea(['rows' => 6]) ?>
 

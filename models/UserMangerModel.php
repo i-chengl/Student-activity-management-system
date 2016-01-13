@@ -51,6 +51,14 @@ class UserMangerModel extends Model implements IUserManger {
 					->one();
 	}
 	
+	public static function getDepartById($id){
+		return User::find()
+					->select('usr_depart')
+					->where(['usr_id'=>$id])
+					->asArray()
+					->one();
+	}
+	
 	
 	
 	

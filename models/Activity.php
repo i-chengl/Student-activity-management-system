@@ -28,6 +28,8 @@ use Yii;
  */
 class Activity extends \yii\db\ActiveRecord
 {
+	
+	
     /**
      * @inheritdoc
      */
@@ -47,7 +49,9 @@ class Activity extends \yii\db\ActiveRecord
             [['act_is_personal', 'act_id_submit', 'act_id_cat', 'act_state'], 'integer'],
             [['act_partici', 'act_comment', 'act_detail'], 'string'],
             [['act_name'], 'string', 'max' => 10],
-            [['act_host', 'act_attach'], 'string', 'max' => 80]
+            [['act_host'], 'string', 'max' => 80],
+        		
+        	[['act_attach'] , 'file' , 'skipOnEmpty' =>false , 'extensions' => 'zip,rar'],
         ];
     }
 
@@ -73,6 +77,17 @@ class Activity extends \yii\db\ActiveRecord
             'act_comment' => '备注',
             'act_detail' => '详情(指导老师，描述，介绍，总结...)',
         ];
+    }
+    
+    
+    public function uploadZip(){
+    
+    	if($this->validate()) {
+    		$this->act_attach->saveAs('uploads/'.$this->act_attach->baseName.'.'.$this->act_attach->extensions);
+    		return true;
+    	}else{
+    		return FALSE;
+    	}
     }
 
     /**
