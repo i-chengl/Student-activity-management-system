@@ -46,9 +46,11 @@ use app\models\Category;
     <?//= $form->field($model, 'act_state')->textInput()
     	//->dropDownList(['','待审核','审核未通过','完结'])?>
  -->
-
+ <!-- 
     <?= $form->field($model, 'zipUpload')->label('附件（压缩包）')->fileInput()
-//     ->textInput(['maxlength' => true]) ?>
+    ->textInput(['maxlength' => true]) ?>
+     -->
+
 
     <?= $form->field($model, 'act_comment')->textarea(['rows' => 6]) ?>
 

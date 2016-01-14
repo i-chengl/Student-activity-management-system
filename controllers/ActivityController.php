@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use app\models\ActivityMangerModel;
 
 /**
  * ActivityController implements the CRUD actions for Activity model.
@@ -101,6 +102,23 @@ class ActivityController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+    /* 
+     * 根据活动状态查询活动
+     * 词穷了 帮忙想词！！！！！添加链接时候记得改呀！！！！！！！
+     *  */
+    public function actionView2(){
+    	
+    	$state = 0;//\yii::$app->getParams('state');
+//     	$searchModel = new ActivitySearch();
+    	$activity = ActivityMangerModel::getActivityByState($state);
+    	
+    	var_dump($activity);
+    	
+//     	return $this->render('index' , [
+//     			'searchModel' => $searchModel,
+//     			'dataProvider' =>$activity]);
+    	
     }
 
     /**
