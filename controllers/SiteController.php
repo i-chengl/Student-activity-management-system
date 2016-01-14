@@ -11,6 +11,7 @@ use app\models\ContactForm;
 use app\models\User;
 use app\models\UploadFileModel;
 use yii\web\UploadedFile;
+use app\models\UserMangerModel;
 
 class SiteController extends Controller
 {
@@ -34,7 +35,7 @@ class SiteController extends Controller
                     ],
                 		
                 	[
-                		'actions' =>['login','about'],
+                		'actions' =>['login','about','contact'],
                 		'allow' =>true,
                 		'roles' =>['?'],//'?'代表访客用户
 //                 		'matchCallback' => function ($rule, $action) {
@@ -149,7 +150,18 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
-        return $this->render('about');
+    	if(Yii::$app->user->isGuest){
+    		return $this->goHome();
+    	}
+    	$model = UserMangerModel::getUserById(Yii::$app->user->id);
+
+    	if($model['usr_group'] =='2'){
+    		return $this->render('manger' , ['user' =>$model]);
+    	}
+    	elseif($model['usr_group'] =='1'){
+    		return $this->render('admin_index' , ['username' =>$model['usr_name']]);
+    	}
+        return $this->goHome();
     }
     
     

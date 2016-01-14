@@ -30,14 +30,15 @@ class ActivityMangerModel extends Model implements IActivityManger {
 	//根据用户名查询自己参加的活动
 	public function getActivityByPartName($name){
 		
-		$id = UserMangerModel::getIdByName($name);
+// 		$id = UserMangerModel::getIdByName($name);
+		$id = User::findByUsername($name, 1)->usr_id;
 		
 		return $this->getActivityByParyId($id['usr_id']);
 	}
 	
 	
 	/*
-	 * 根据用户ID获取自己参加的个人活动  
+	 * 根据用户ID获取自己参加的活动  
 	 * */
 	public function getActivityByParyId($id){
 		//我参加的活动的活动id 集合

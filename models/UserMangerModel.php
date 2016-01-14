@@ -24,9 +24,9 @@ class UserMangerModel extends Model implements IUserManger {
 	 * 根据用户id获取用户详细信息 
 	 */
 	
-	public function getAllInfoById($id){
+	public static function getUserById($id){
 		
-		return User::findOne(['usr_id' =>$id]);
+		return User::findOne(['usr_id' =>$id])->toArray();
 	}
 	
 	/*根据用户名查询ID
@@ -60,7 +60,10 @@ class UserMangerModel extends Model implements IUserManger {
 	
 	
 	
-	public function getActivityByUserId($user_id){}
+	public function getActivityByUserId($user_id){
+		
+		return User::findOne(['usr_id' => $user_id])->activities;
+	}
 	
 	/*  登陆
 	 * */
