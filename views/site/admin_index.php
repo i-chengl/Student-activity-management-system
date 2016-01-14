@@ -66,9 +66,9 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="panel panel-default">
 					<div class="panel-footer">
 						<a class="panel-title collapsed" data-toggle="collapse"
-							data-parent="#panel-110204" href="#panel-element-879301">管理活动分类</a>
+							data-parent="#panel-110204" href="#panel-element-879303">管理活动分类</a>
 					</div>
-					<div id="panel-element-879301" class="panel-collapse collapse">
+					<div id="panel-element-879303" class="panel-collapse collapse">
 						<div class="panel-body">增加分类</div>
 						<div class="panel-body">查看分类</div>
 						<div class="panel-body">删除分类</div>

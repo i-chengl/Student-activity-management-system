@@ -22,6 +22,35 @@ class ActivityMangerModel extends Model implements IActivityManger {
 // 		return Activity::findAll(['act_name' => $actName]);
 	}
 	
+	/* 
+	 * 查看所有待审核的活动
+	 *  */
+	public function getActivityWaitAudit(){
+		return Activity::find()
+							->where(['act_state' =>'0' ])
+							->asArray()
+							->all();
+	}
+	
+	/*
+	 * 查看所有审核未通过的活动
+	 *   */
+	public function getActivityNotPass(){
+		return Activity::find()
+							->where(['act_state' => '1'])
+							->asArray()
+							->all();
+	}
+	/*
+	 * 获取已完结的活动
+	 *   */
+	public function getActivityFinished(){
+		return Activity::find()
+							->where(['act_state' =>'2'])
+							->asArray()
+							->all();
+	}
+	
 	
 	public function getActivityByDate($date){
 		
