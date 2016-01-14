@@ -114,6 +114,17 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
     
     /**
+     * Finds user by userid
+     *
+     * @param  int      $userid
+     * @return static|null
+     */
+    public static function findByUserId($userid , $group)
+    {
+    	return static::findOne(['usr_id' => $userid , 'usr_group' =>$group]);
+    }
+    
+    /**
      * @inheritdoc
      * 权限ID？admin or user
      * 获取该认证实例表示的用户的ID。

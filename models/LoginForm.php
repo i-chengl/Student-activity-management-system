@@ -10,6 +10,7 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
+	public $usr_id;
     public $usr_name;
     public $usr_passwd;
     public $rememberMe = true;
@@ -24,7 +25,7 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['usr_name', 'usr_passwd','usr_group'], 'required'],
+            [['usr_id', 'usr_passwd','usr_group'], 'required'],
             ['rememberMe', 'boolean'],
             ['usr_passwd', 'validatePassword'],
         ];
@@ -68,7 +69,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->usr_name , $this->usr_group);
+            $this->_user = User::findByUserId($this->usr_id , $this->usr_group);
         }
 
         return $this->_user;

@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					   ],
     			]); ?>
 
-        <?= $form->field($model, 'usr_name')->label('Name')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'usr_id')->label('id')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($model, 'usr_passwd')->label('Pass')->passwordInput() ?>
         
