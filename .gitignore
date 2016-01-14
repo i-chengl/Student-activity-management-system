@@ -16,7 +16,7 @@ Thumbs.db
 #/vendor
 
 #db
-config/db.php
+/config/db.php
 
 
 # app runtime dir
