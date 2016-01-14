@@ -24,8 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
 							data-parent="#panel-110204" href="#panel-element-141314">管理用户</a>
 					</div>
 					<div id="panel-element-141314" class="panel-collapse collapse ">
-						<div class="panel-body">查看用户</div>
-						<div class="panel-body">增加用户</div>
+						<div class="panel-body">
+							<a href="?r=user/index">查看用户</a>
+						</div>
+						<div class="panel-body">
+							<a href="?r=user/create">增加用户</a>
+						</div>
 						<div class="panel-body">修改用户</div>
 						<div class="panel-body">删除用户</div>
 					</div>

@@ -156,10 +156,11 @@ class SiteController extends Controller
     	$model = UserMangerModel::getUserById(Yii::$app->user->id);
 
     	if($model['usr_group'] =='2'){
-    		return $this->render('manger' , ['user' =>$model]);
+    		return $this->render('admin_index' , ['username' =>$model['usr_name']]);
+    	
     	}
     	elseif($model['usr_group'] =='1'){
-    		return $this->render('admin_index' , ['username' =>$model['usr_name']]);
+    		return $this->render('manger' , ['user' =>$model]);
     	}
         return $this->goHome();
     }
