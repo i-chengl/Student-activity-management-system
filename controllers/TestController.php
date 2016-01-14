@@ -45,7 +45,7 @@ class TestController extends \yii\web\Controller
 //     	}
 //     }
 	private $act_name = "测试添加活动";
-	private  $act_id = 3120602001;
+	private  $act_id = 1000000000;
 	private $user_name = "陈林";
 
 	public function actionIndex(){
@@ -53,7 +53,7 @@ class TestController extends \yii\web\Controller
 		
 // 		$result = $activity->getActIdCat();
 		
-		$activity = User::findOne(['usr_id' =>$this->act_id])->activities;
+// 		$activity = User::findOne(['usr_id' =>$this->act_id])->activities;
 		
 // 		$result = $user->getActivities();	
 		
@@ -61,9 +61,10 @@ class TestController extends \yii\web\Controller
 		
 // 		$activity = new ActivityMangerModel();
 		
-// 		$activities = new UserMangerModel();
+		$user = new UserMangerModel();
+	
 		
-// 		$result = $activities->getActivityByid($this->act_id);
+		$result = $user->getActivityByid($this->act_id);
 		
 // 		$result = $activity->getActivityByActName($this->act_name);
 		
@@ -71,7 +72,7 @@ class TestController extends \yii\web\Controller
 
 // 		$result = $activity->getActivityByPartName($this->user_name);
 		
-		var_dump($activity);
+		var_dump($result);
 	}
 
 }

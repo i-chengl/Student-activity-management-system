@@ -14,10 +14,8 @@ class UserMangerModel extends Model implements IUserManger {
 	
 	public function getActivityByid($id){
 		
-		return Activity::find()
-							->where(['act_id_submit' =>$id])
-							->asArray()
-							->all();
+		return User::findOne(['usr_id' =>$id])
+					->activities;
 	}
 	
 

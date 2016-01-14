@@ -18,7 +18,7 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['usr_id', 'usr_state'], 'integer'],
+            [['usr_id',  'usr_group', 'usr_state'], 'integer'],
             [['usr_name', 'usr_passwd', 'usr_depart', 'usr_class'], 'safe'],
         ];
     }
@@ -57,6 +57,7 @@ class UserSearch extends User
 
         $query->andFilterWhere([
             'usr_id' => $this->usr_id,
+        	'usr_group' => $this->usr_group,
             'usr_state' => $this->usr_state,
         ]);
 

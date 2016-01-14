@@ -12,10 +12,14 @@ class ActivityMangerModel extends Model implements IActivityManger {
 	
 	public function getActivityByActName($actName) {
 		
+// 		返回的是数组
 		return Activity::find()
-			->where(['act_name' =>$actName])
-			->asArray()
-			->all();
+					->where(['act_name' =>$actName])
+					->asArray()
+					->all();
+		
+// 		返回的是对象
+// 		return Activity::findAll(['act_name' => $actName]);
 	}
 	
 	
@@ -68,7 +72,5 @@ class ActivityMangerModel extends Model implements IActivityManger {
 					->asArray()
 					->all();
 	}
-	
-	
-	
+
 }

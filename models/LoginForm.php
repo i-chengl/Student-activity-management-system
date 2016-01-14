@@ -13,7 +13,7 @@ class LoginForm extends Model
     public $usr_name;
     public $usr_passwd;
     public $rememberMe = true;
-    public $role = 0;
+    public $usr_group;
 
     private $_user = false;
 
@@ -24,7 +24,7 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['usr_name', 'usr_passwd'], 'required'],
+            [['usr_name', 'usr_passwd','usr_group'], 'required'],
             ['rememberMe', 'boolean'],
             ['usr_passwd', 'validatePassword'],
         ];
@@ -68,7 +68,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->usr_name);
+            $this->_user = User::findByUsername($this->usr_name , $this->usr_group);
         }
 
         return $this->_user;

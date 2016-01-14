@@ -13,6 +13,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'usr_id')->textInput(['maxlength' => true]) ?>
+    
+   	<?= $form->field($model, 'usr_group')->dropDownList(['1' =>'普通用户' , '2' =>'管理员']) ?> 
 
     <?= $form->field($model, 'usr_name')->textInput(['maxlength' => true]) ?>
 

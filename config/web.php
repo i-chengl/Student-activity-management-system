@@ -28,6 +28,17 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+    		
+    	//基于角色的控制访问
+    	'authManager' => [
+    		'class' => 'yii\rbac\PhpManager',// 脚本存放授权数据， @app/rbac 目录下的文件中
+    		'defaultRoles' => ['admin', 'user'],
+    			
+//     		'class' => 'yii\rbac\DbManager',
+		//数据库存放授权数据，需要在数据库中添加 4 张 表  {auth_item、auth_item_child、auth_assignment、auth_rule}
+    	],
+    			
+    		
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

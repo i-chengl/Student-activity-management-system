@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "{{%user}}".
  *
  * @property string $usr_id
+ * @property integer $usr_group 
  * @property string $usr_name
  * @property string $usr_passwd
  * @property integer $usr_state
@@ -37,7 +38,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['usr_id', 'usr_name', 'usr_passwd', 'usr_state'], 'required'],
-            [['usr_id', 'usr_state'], 'integer'],
+            [['usr_id',  'usr_group','usr_state'], 'integer'],
             [['usr_name'], 'string', 'max' => 10],
             [['usr_passwd', 'usr_class'], 'string', 'max' => 20],
             [['usr_depart'], 'string', 'max' => 40]
@@ -51,6 +52,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'usr_id' => '学号/工号',
+        	'usr_group' => '角色：2-管理员 1-普通用户',
             'usr_name' => '用户名',
             'usr_passwd' => '密码',
             'usr_state' => '身份：1-teacher 0-student',
@@ -106,20 +108,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      * @param  string      $username
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByUsername($username , $group)
     {
-//     	return static::findOne($username);
-		$user = User::find()
-					->where(['usr_name' => $username])
-					->asArray()
-					->one();
-		if($user)
-			return new static($user);
-		return null;
+    	return static::findOne(['usr_name' => $username , 'usr_group' =>$group]);
     }
     
     /**
      * @inheritdoc
+     * 权限ID？admin or user
      * 获取该认证实例表示的用户的ID。
      */
     public function getId()
@@ -153,7 +149,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      * @return boolean if password provided is valid for current user
      */
     public function validatePassword($password)
-    {
+    {//后续添加密码加密进行验证  预计添加 md5(pass+shal)  md5（）加哈希验证
+    	//目前暂时存储明码
     	return $this->usr_passwd === $password;
     }
     

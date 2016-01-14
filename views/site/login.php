@@ -44,11 +44,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'usr_name')->label('Name')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($model, 'usr_passwd')->label('Pass')->passwordInput() ?>
+        
+        <?= $form->field($model, 'usr_group')->dropDownList(['1' =>'普通用户' , '2'=>'管理员']) ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
             'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
         ]) ?>	
-        <?= $form->field($model, 'role')->radioList([0 =>'普通用户',1=>'管理员'])->label('角色') ?>
+       
 
         <div class="form-group">
             <div class="col-lg-offset-4 col-lg-8">

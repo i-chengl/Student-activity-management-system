@@ -24,7 +24,7 @@ class UserController extends Controller
                 ],
             ],
         ];
-    }
+    }		
 
     /**
      * Lists all User models.
@@ -72,6 +72,22 @@ class UserController extends Controller
         $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        	
+        	//保存用户时候分配角色
+        	
+        	/* 未验证，验证通过之后可以添加为一个事件 */
+        	
+        	
+//         	$auth = Yii::$app->authManager;
+//         	if($model->usr_group ==2){
+//         		$authorRole = $auth->getRole('admin');
+//         		$auth->assign($authorRole, $model->getId());
+//         	}else{
+//         		$authorRole = $auth->getRole('user');
+//         		$auth->assign($authorRole, $model->getId());
+//         	}
+
+        	
             return $this->redirect(['view', 'id' => $model->usr_id]);
         } else {
             return $this->render('create', [
