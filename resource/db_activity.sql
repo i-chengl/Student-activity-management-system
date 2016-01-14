@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-01-12 17:52:56
+-- Generation Time: 2016-01-14 13:05:15
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -45,35 +45,17 @@ CREATE TABLE IF NOT EXISTS `act_activity` (
   PRIMARY KEY (`act_id`),
   KEY `id_submit` (`act_id_submit`) COMMENT '外键约束',
   KEY `id_cat` (`act_id_cat`) COMMENT '外键约束'
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='活动表' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='活动表' AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `act_activity`
 --
 
 INSERT INTO `act_activity` (`act_id`, `act_name`, `act_date_beg`, `act_date_end`, `act_time_submit`, `act_time_update`, `act_is_personal`, `act_id_submit`, `act_host`, `act_partici`, `act_id_cat`, `act_state`, `act_attach`, `act_comment`, `act_detail`) VALUES
-(1, '江苏高校传媒新闻奖', '2013-04-03', '2013-10-09', '2016-01-09 23:12:24', '2016-01-09 23:12:24', 1, 3120602001, '江苏高校传媒', '王丽珍', 8, 0, NULL, NULL, 'phpmyadmin 输入测试'),
-(2, '测试添加活动', '2013-01-01', '2013-12-01', '2016-01-12 20:45:51', '2016-01-12 20:45:51', 1, 1000000000, '测试举办方', '测试用户 空格隔开', 6, 0, '无', '', '详情测试');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `act_admin`
---
-
-CREATE TABLE IF NOT EXISTS `act_admin` (
-  `adm_id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `adm_name` varchar(10) NOT NULL COMMENT '姓名',
-  `adm_passwd` varchar(20) NOT NULL COMMENT '密码',
-  PRIMARY KEY (`adm_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='管理员表' AUTO_INCREMENT=3 ;
-
---
--- 转存表中的数据 `act_admin`
---
-
-INSERT INTO `act_admin` (`adm_id`, `adm_name`, `adm_passwd`) VALUES
-(1, 'admin', 'admin');
+(1, '江苏高校传媒新闻奖', '2013-04-03', '2013-10-09', '2016-01-09 23:12:24', '2016-01-09 23:12:24', 1, 3120602001, '江苏高校传媒', '王丽珍、3120602019、3120602001', 8, 0, NULL, NULL, 'phpmyadmin 输入测试'),
+(2, '测试添加活动', '2013-01-01', '2013-12-01', '2016-01-12 20:45:51', '2016-01-12 20:45:51', 1, 2000000001, '测试举办方', '测试用户 空格隔开', 6, 0, '无', '', '详情测试'),
+(3, '测试集体活动', '2016-01-06', '2016-01-08', '2016-01-13 23:14:09', '2016-01-13 23:14:09', 0, 3120602019, '测试集体活动', '计算机1201、计算机科学与通信工程学院、3120602038', 5, 0, NULL, NULL, ''),
+(8, '测试活动提交', '2016-01-04', '2016-01-08', '2016-01-14 00:05:06', '2016-01-14 00:05:06', 1, 3120602019, NULL, '倒萨', 6, 0, NULL, NULL, '的撒倒萨');
 
 -- --------------------------------------------------------
 
@@ -113,6 +95,7 @@ INSERT INTO `act_category` (`cat_id`, `cat_name`, `cat_level`, `cat_id_parent`) 
 
 CREATE TABLE IF NOT EXISTS `act_user` (
   `usr_id` bigint(11) unsigned NOT NULL COMMENT '学号/工号',
+  `usr_group` smallint(2) NOT NULL DEFAULT '1' COMMENT '角色：2-管理员 1-普通用户',
   `usr_name` varchar(10) NOT NULL COMMENT '用户名',
   `usr_passwd` varchar(20) NOT NULL COMMENT '密码',
   `usr_state` tinyint(1) NOT NULL COMMENT '身份：1-teacher 0-student',
@@ -125,14 +108,15 @@ CREATE TABLE IF NOT EXISTS `act_user` (
 -- 转存表中的数据 `act_user`
 --
 
-INSERT INTO `act_user` (`usr_id`, `usr_name`, `usr_passwd`, `usr_state`, `usr_depart`, `usr_class`) VALUES
-(1000000000, '潘雨青', '12345', 1, '计算机科学与通信工程学院', ''),
-(2000000000, '马悦峰', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
-(2321321321, '测试', '12345', 1, NULL, NULL),
-(3120602001, '王丽珍', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
-(3120602003, '李成倩', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
-(3120602019, '陈林', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
-(3120602038, '陈娇倩', '12345', 0, '计算机科学与通信工程学院', '计算机1203');
+INSERT INTO `act_user` (`usr_id`, `usr_group`, `usr_name`, `usr_passwd`, `usr_state`, `usr_depart`, `usr_class`) VALUES
+(1000000000, 2, 'admin', 'admin', 0, '计算机科学与通信工程学院', '科学系'),
+(2000000000, 1, '马悦峰', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(2000000001, 1, '潘雨青', '12345', 1, '计算机科学与通信工程学院', ''),
+(2321321321, 1, '测试', '12345', 1, NULL, NULL),
+(3120602001, 1, '王丽珍', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(3120602003, 1, '李成倩', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(3120602019, 1, '陈林', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(3120602038, 1, '陈娇倩', '12345', 0, '计算机科学与通信工程学院', '计算机1203');
 
 --
 -- 限制导出的表
