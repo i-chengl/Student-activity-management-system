@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Activity;
 use app\models\search\ActivitySearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,7 +22,17 @@ class ActivityController extends Controller
 	
     public function behaviors()
     {
-        return [
+        return 
+        [
+        	'access' =>[
+        			'class' => AccessControl::className(),
+        			'only' => ['views'],
+        			'rules' => [
+//         					'actions' => ['views'],
+//         					'allow' => true,
+//         					'roles' => ['?'],//'@'代表已授权用户
+        			],
+        	],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -107,17 +118,16 @@ class ActivityController extends Controller
      * 根据活动状态查询活动
      * 词穷了 帮忙想词！！！！！添加链接时候记得改呀！！！！！！！
      *  */
-    public function actionView2(){
+    public function actionViews(){
     	
-    	$state = 0;//\yii::$app->getParams('state');
+//     	$state = 0;//\yii::$app->getParams('state');
 //     	$searchModel = new ActivitySearch();
-    	$activity = ActivityMangerModel::getActivityByState($state);
-    	
-    	var_dump($activity);
-    	
-//     	return $this->render('index' , [
-//     			'searchModel' => $searchModel,
-//     			'dataProvider' =>$activity]);
+
+//     	$activity = ActivityMangerModel::getActivityByState($state);
+    	$activity = ActivityMangerModel::getAllActivity();
+
+
+    	return $this->render('views' ,['activity' => $activity]);
     	
     }
 
