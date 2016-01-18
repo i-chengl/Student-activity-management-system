@@ -30,15 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						<div class="panel-body">
 							<a href="?r=user/create">增加用户</a>
 						</div>
-
-						<div class="panel-body">
-							<a href="?r=user/update">修改用户</a>
-						</div>
-						<div class="panel-body">
-							<a href="?r=user/delete">删除用户</a>
-						</div>
-					</div>
-				</div>
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
@@ -59,6 +50,17 @@ $this->params['breadcrumbs'][] = $this->title;
 							<a href= "?r=activity/&state=1">审核未通过活动</a>
 						</div>
 
+							<a href="?r=activity/index">查看所有活动</a>
+						</div>
+						<div class="panel-body">
+							<a href="?r=activity/view2">未审核活动</a>
+						</div>
+						<div class="panel-body">
+							<a href="?r=activity/view2">已完结活动</a>
+						</div>
+						<div class="panel-body">
+							<a href="?r=activity/view2">审核未通过活动</a>
+						</div>
 					</div>
 				</div>
 
@@ -79,10 +81,12 @@ $this->params['breadcrumbs'][] = $this->title;
 							data-parent="#panel-110204" href="#panel-element-879303">我的个人信息</a>
 					</div>
 					<div id="panel-element-879303" class="panel-collapse collapse">
-						<div class="panel-body">增加分类</div>
-						<div class="panel-body">查看分类</div>
-						<div class="panel-body">删除分类</div>
-						<div class="panel-body">更新分类</div>
+						<div class="panel-body">
+							<a href="?r=category/create">增加分类</a>
+						</div>
+						<div class="panel-body">
+							<a href="?r=category/index">查看分类</a>
+						</div>
 					</div>
 				</div>
 
@@ -91,8 +95,4 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="col-md-4 column"></div>
 		</div>
 	</div>
-
-	
-	
-	
 </div>

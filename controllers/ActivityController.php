@@ -159,4 +159,11 @@ class ActivityController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    /*以下为manger界面链接用到的action*/
+    
+    //我参加的活动
+    public function actionParticipate()
+    {
+    }
 }
