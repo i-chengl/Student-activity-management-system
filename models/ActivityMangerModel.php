@@ -6,9 +6,15 @@ use yii\base\Model;
 use app\models\interface_file\IActivityManger;
 use app\models\query\ActivityQuery;
 
-class ActivityMangerModel extends Model implements IActivityManger {
+class ActivityMangerModel extends Model  {
 	
 	
+	
+	public static function getAllActivity(){
+		return Activity::find()
+							->asArray()
+							->all();
+	}
 	
 	public function getActivityByActName($actName) {
 		

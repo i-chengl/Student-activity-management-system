@@ -4,7 +4,7 @@ namespace app\models;
 use yii\base\Model;
 use app\models\interface_file\IUserManger;
 
-class UserMangerModel extends Model implements IUserManger {
+class UserMangerModel extends Model {
 	
 	/*  
 	 * 查询自己组织过的活动
@@ -64,16 +64,5 @@ class UserMangerModel extends Model implements IUserManger {
 		
 		return User::findOne(['usr_id' => $user_id])->activities;
 	}
-	
-	/*  登陆
-	 * */
-	public function login(){}
-	
-	/*
-	 * 退出 */
-	public function logout(){}
-	
-	/*
-	 * 注册 */
-	public function register(){}
+
 }

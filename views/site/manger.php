@@ -26,9 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
 							data-parent="#panel-110204" href="#panel-element-141314">我参加的活动</a>
 					</div>
 					<div id="panel-element-141314" class="panel-collapse collapse ">
-						<div class="panel-body">我参加的全部活动</div>
-						<div class="panel-body">我参加的集体活动</div>
-						<div class="panel-body">我参加的个人活动</div>
+						<div class="panel-body">
+							<a href="?r=activity/participate">我参加的全部活动</a>
+						</div>
+						<div class="panel-body">
+//						<a href="?r=activity/">我参加的集体活动</a>
+						</div>
+						<div class="panel-body">
+//							<a href="?r=activity/">我参加的个人活动</a>
+						</div>
 					</div>
 				</div>
 				
@@ -40,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<div id="panel-element-879302" class="panel-collapse collapse">
 						<div class="panel-body">我组织的个人活动</div>
 						<div class="panel-body">我组织的个人活动</div>
-						<div class="panel-body">我组织的个人活动</div>
+						<div class="panel-body">我组织的个人活动</div>	
 						<div class="panel-body">我组织的个人活动</div>
 						<div class="panel-body">我组织的个人活动</div>
 						<div class="panel-body">我组织的个人活动</div>

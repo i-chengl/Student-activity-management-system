@@ -30,8 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
 						<div class="panel-body">
 							<a href="?r=user/create">增加用户</a>
 						</div>
-						<div class="panel-body">修改用户</div>
-						<div class="panel-body">删除用户</div>
+
+						<div class="panel-body">
+							<a href="?r=user/update">修改用户</a>
+						</div>
+						<div class="panel-body">
+							<a href="?r=user/delete">删除用户</a>
+						</div>
 					</div>
 				</div>
 				
@@ -41,12 +46,19 @@ $this->params['breadcrumbs'][] = $this->title;
 							data-parent="#panel-110204" href="#panel-element-879302">活动管理</a>
 					</div>
 					<div id="panel-element-879302" class="panel-collapse collapse">
-						<div class="panel-body">查看所有活动</div>
-						<div class="panel-body">未审核活动</div>
-						<div class="panel-body">已完结活动</div>
-						<div class="panel-body">审核未通过活动</div>
-						<div class="panel-body">我组织的个人活动</div>
-						<div class="panel-body">我组织的个人活动</div>
+						<div class="panel-body">
+							<a  href= "?r=activity/index" >查看所有活动</a>
+						</div>
+						<div class="panel-body">
+							<a href = "?r=activity/&state=0">未审核活动</a>
+						</div>
+						<div class="panel-body">
+							<a href= "?r=activity/&state=2" >已完结活动</a>
+						</div>
+						<div class="panel-body">
+							<a href= "?r=activity/&state=1">审核未通过活动</a>
+						</div>
+
 					</div>
 				</div>
 
@@ -56,17 +68,15 @@ $this->params['breadcrumbs'][] = $this->title;
 							data-parent="#panel-110204" href="#panel-element-879301">管理活动分类</a>
 					</div>
 					<div id="panel-element-879301" class="panel-collapse collapse">
-						<div class="panel-body">增加分类</div>
-						<div class="panel-body">查看分类</div>
-						<div class="panel-body">删除分类</div>
-						<div class="panel-body">更新分类</div>
+						<div class="panel-body"><a href="?r=category/create">增加分类</a></div>
+						<div class="panel-body"><a href = "?r=category/index">查看分类</a></div>
 					</div>
 				</div>
 				
 				<div class="panel panel-default">
 					<div class="panel-footer">
 						<a class="panel-title collapsed" data-toggle="collapse"
-							data-parent="#panel-110204" href="#panel-element-879303">管理活动分类</a>
+							data-parent="#panel-110204" href="#panel-element-879303">我的个人信息</a>
 					</div>
 					<div id="panel-element-879303" class="panel-collapse collapse">
 						<div class="panel-body">增加分类</div>

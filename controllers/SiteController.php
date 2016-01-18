@@ -92,17 +92,14 @@ class SiteController extends Controller
         }
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-        	
-        	
-//         	var_dump($model->usr_group);die;
         	if($model->usr_group == 2){
-        		return $this->loginAdmin($model->toArray());
-        		
-//         		return $this->render('admin_index' , ['username' =>$model->usr_name]);
+//         		return $this->loginAdmin($model->toArray());
+//        		return $this->redirect('?r=site/admin' );
+        		return $this->render('admin_index' , ['user' =>$model->toArray()]);
         	}
         	elseif($model->usr_group == 1){
-        		return $this->loginManger($model->toArray());
-//         		return $this->render('manger' , ['user' => $model->toArray()]);
+//        		return $this->redirect('?r=site/manger' );
+        		return $this->render('manger' , ['user' => $model->toArray()]);
         	}
         	return $this->goBack();
         }
@@ -156,7 +153,7 @@ class SiteController extends Controller
     	$model = UserMangerModel::getUserById(Yii::$app->user->id);
 
     	if($model['usr_group'] =='2'){
-    		return $this->render('admin_index' , ['username' =>$model['usr_name']]);
+    		return $this->render('admin_index' , ['user' =>$model]);
     	
     	}
     	elseif($model['usr_group'] =='1'){
@@ -166,14 +163,14 @@ class SiteController extends Controller
     }
     
     
-    private function loginManger($model)
+    public function actionManger()
     {
-    	
+    	$model = Yii::$app-user;
     	return $this->render('manger' , ['user' =>$model]);
     }
     
-    private function loginAdmin($model)
+    private function actionAdmin($model)
     {
-    	return $this->render('admin_index' , ['username' =>$model['usr_name']]);
+    	return $this->render('admin_index' , ['user' =>$model]);
     }
 }
