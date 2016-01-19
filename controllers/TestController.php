@@ -10,6 +10,9 @@ use app\models\ActivityMangerModel;
 use app\models\UserMangerModel;
 class TestController extends \yii\web\Controller
 {
+	public function actionEditor(){
+		return $this->render('editor');
+	}
 //     public function actionIndex()
 //     {
 
