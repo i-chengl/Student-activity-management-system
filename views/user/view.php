@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'usr_state',
             'usr_depart',
             'usr_class',
+            'login_ip',
         ],
     ]) ?>
 

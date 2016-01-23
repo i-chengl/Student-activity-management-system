@@ -30,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
 						<div class="panel-body">
 							<a href="?r=user/create">增加用户</a>
 						</div>
+					</div>
+				</div>
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
@@ -48,18 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						</div>
 						<div class="panel-body">
 							<a href= "?r=activity/&state=1">审核未通过活动</a>
-						</div>
-
-							<a href="?r=activity/index">查看所有活动</a>
-						</div>
-						<div class="panel-body">
-							<a href="?r=activity/view2">未审核活动</a>
-						</div>
-						<div class="panel-body">
-							<a href="?r=activity/view2">已完结活动</a>
-						</div>
-						<div class="panel-body">
-							<a href="?r=activity/view2">审核未通过活动</a>
 						</div>
 					</div>
 				</div>

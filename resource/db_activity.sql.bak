@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-01-23 10:05:27
+-- Generation Time: 2016-01-14 13:05:15
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -101,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `act_user` (
   `usr_state` tinyint(1) NOT NULL COMMENT '身份：1-teacher 0-student',
   `usr_depart` varchar(40) DEFAULT NULL COMMENT '所属院系(教师可为NULL)',
   `usr_class` varchar(20) DEFAULT NULL COMMENT '所属班级(教师为NULL)',
-  `login_ip` varchar(15) NOT NULL COMMENT '上次登录ip',
   PRIMARY KEY (`usr_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
@@ -109,15 +108,15 @@ CREATE TABLE IF NOT EXISTS `act_user` (
 -- 转存表中的数据 `act_user`
 --
 
-INSERT INTO `act_user` (`usr_id`, `usr_group`, `usr_name`, `usr_passwd`, `usr_state`, `usr_depart`, `usr_class`, `login_ip`) VALUES
-(1000000000, 2, 'admin', 'admin', 0, '计算机科学与通信工程学院', '科学系', ''),
-(2000000000, 1, '马悦峰', '12345', 0, '计算机科学与通信工程学院', '计算机1201', ''),
-(2000000001, 1, '潘雨青', '12345', 1, '计算机科学与通信工程学院', '', ''),
-(2321321321, 1, '测试', '12345', 1, NULL, NULL, ''),
-(3120602001, 1, '王丽珍', '12345', 0, '计算机科学与通信工程学院', '计算机1201', ''),
-(3120602003, 1, '李成倩', '12345', 0, '计算机科学与通信工程学院', '计算机1201', ''),
-(3120602019, 1, '陈林', '12345', 0, '计算机科学与通信工程学院', '计算机1201', ''),
-(3120602038, 1, '陈娇倩', '12345', 0, '计算机科学与通信工程学院', '计算机1203', '');
+INSERT INTO `act_user` (`usr_id`, `usr_group`, `usr_name`, `usr_passwd`, `usr_state`, `usr_depart`, `usr_class`) VALUES
+(1000000000, 2, 'admin', 'admin', 0, '计算机科学与通信工程学院', '科学系'),
+(2000000000, 1, '马悦峰', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(2000000001, 1, '潘雨青', '12345', 1, '计算机科学与通信工程学院', ''),
+(2321321321, 1, '测试', '12345', 1, NULL, NULL),
+(3120602001, 1, '王丽珍', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(3120602003, 1, '李成倩', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(3120602019, 1, '陈林', '12345', 0, '计算机科学与通信工程学院', '计算机1201'),
+(3120602038, 1, '陈娇倩', '12345', 0, '计算机科学与通信工程学院', '计算机1203');
 
 --
 -- 限制导出的表

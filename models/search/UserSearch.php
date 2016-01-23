@@ -19,7 +19,7 @@ class UserSearch extends User
     {
         return [
             [['usr_id',  'usr_group', 'usr_state'], 'integer'],
-            [['usr_name', 'usr_passwd', 'usr_depart', 'usr_class'], 'safe'],
+            [['usr_name', 'usr_passwd', 'usr_depart', 'usr_class' , 'login_ip'], 'safe'],
         ];
     }
 
@@ -64,7 +64,8 @@ class UserSearch extends User
         $query->andFilterWhere(['like', 'usr_name', $this->usr_name])
             ->andFilterWhere(['like', 'usr_passwd', $this->usr_passwd])
             ->andFilterWhere(['like', 'usr_depart', $this->usr_depart])
-            ->andFilterWhere(['like', 'usr_class', $this->usr_class]);
+            ->andFilterWhere(['like', 'usr_class', $this->usr_class])
+            ->andFilterWhere(['like' , 'login_ip' , $this->login_ip]);
 
         return $dataProvider;
     }
